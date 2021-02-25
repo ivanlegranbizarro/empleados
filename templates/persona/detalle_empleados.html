@@ -1,0 +1,46 @@
+{% extends '../base.html' %}
+
+
+{% block title %}
+Detalle de un empleado
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-auto my-5">
+            <h1>Detalle de un empleado {{titulo}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 my-5">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre y apellidos</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Habilidades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{object.id}}</th>
+                        <td>{{object.first_name}} {{object.last_name}}</td>
+                        <td>{{object.departamento}}</td>
+                        <td>
+                            <ul>
+                                {% for habilidad in object.habilidades.all %}
+                                    <li>{{habilidad}}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

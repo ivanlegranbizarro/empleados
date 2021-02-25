@@ -1,0 +1,24 @@
+{% extends '../base.html' %}
+
+{% block title %}
+Eliminar empleados
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col">
+            <form method="post">{% csrf_token %}
+                <div class="card w-50">
+                    <div class="card-body">
+                        <h5 class="card-title">Eliminar a un empleado</h5>
+                        <p class="card-text">¿Desea eliminar al empleado {{empleado.first_name}} {{empleado.last_name}}?
+                        </p>
+                        <button class="btn btn-outline-danger">Eliminar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

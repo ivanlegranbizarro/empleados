@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de prueba</title>
+</head>
+
+<body>
+    <h1>Lista de prueba con el modelo genérico para listas</h1>
+
+    {% for lista in lista_prueba %}
+    <p>Título: "{{lista.titulo}}"</p>
+    <p>Número de temporadas: {{lista.cantidad}}</p>
+    {% endfor %}
+
+</body>
+
+</html>

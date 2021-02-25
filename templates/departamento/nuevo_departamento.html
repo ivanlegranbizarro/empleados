@@ -1,0 +1,26 @@
+{% extends '../base.html' %}
+
+
+{% block title %}
+Crea nuevos departamentos para tu empresa
+{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col">
+            <h1>Crea aquí nuevos departamentos para tu empresa</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <form method="post"> {% csrf_token %}
+                {{form|crispy}}
+                <button class="btn btn-sm btn-outline-success" type="submit">Guardar departamento</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

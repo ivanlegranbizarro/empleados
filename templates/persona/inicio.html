@@ -1,0 +1,47 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}
+Página inicial de nuestro Proyecto
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <!-- Inicio Carousel -->
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner my-5">
+                    <div class="carousel-item active text-center">
+                        <img src="{% static 'img/jefazo.jpg' %}" class="img-fluid mx-auto w-50" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Carousel -->
+
+    <!-- Inicio Bloque Bienvenida -->
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Bienvenido al sistema para administrar tus empleados</h1>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Controla desde aquí los registros de tus empleados</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nulla tenetur
+                        magnam
+                        pariatur, nemo beatae aut obcaecati dignissimos minima necessitatibus..</p>
+                    <a href="{% url 'persona_app:lista_empleados' %}" class="btn btn-dark my-5">Tus empleados</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

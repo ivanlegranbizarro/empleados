@@ -1,0 +1,80 @@
+{% extends '../base.html' %}
+
+{% block title %}
+Lista de los empleados
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col">
+            <h1>Lista de los empleados</h1>
+        </div>
+    </div>
+    <div class="row my-5 justify-content-center">
+        <div class="col-7">
+            <form class="d-flex" method="GET">{% csrf_token %}
+                <input class="form-control me-2" id="kword" name="kword" type="search" placeholder="Buscar"
+                    aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empleado in empleados %}
+                    <tr>
+                        <th scope="row">{{empleado.id}}</th>
+                        <td>{{empleado.first_name}}</td>
+                        <td>{{empleado.last_name}}</td>
+                        <td>{{empleado.departamento}}</td>
+                        <td><a class="btn btn-sm btn-outline-warning"
+                                href="{% url 'persona_app:detalle_empleado' empleado.id %}">Ver</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        {% if is_paginated %}
+        <nav aria-label="Page navigation example" class="fixed-bottom">
+            <ul class="pagination justify-content-center my-3">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1"
+                        aria-disabled="true">Anterior</a>
+                </li>
+                {% endif %}
+
+                {% for page in paginator.page_range %}
+                {% ifequal page page_obj.number %}
+                <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                {% endifequal %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{page_obj.next_page_number}}">Siguiente</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock content %}

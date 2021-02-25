@@ -1,0 +1,39 @@
+{% extends '../base.html' %}
+
+{% block title %}
+Lista de Departamentos
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col">
+            <h1>Lista de los Departamentos</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <table class="table my-5">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre del departamento</th>
+                        <th scope="col">Abreviatura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for departamento in departamentos %}
+                    <tr>
+                        <th scope="row">{{departamento.name}}</th>
+                        <td>{{departamento.short_name}}</td>
+                        <td><a class="btn btn-sm btn-outline-secondary"
+                                href="{% url 'persona_app:empleados_por_departamento' departamento.name %}">Empleados</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
